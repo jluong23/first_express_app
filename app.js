@@ -4,11 +4,22 @@ const morgan = require('morgan');
 const app = express()
 app.set('view engine', 'ejs');
 const port = 3000
-
-app.use(morgan('tiny'));
+app.use(morgan('tiny')); //middleware extension
+app.use(express.static('public')) //allow use of static files in /public
+const content = [
+  {
+    title: "Item 1",
+    description: "Test 1"
+  },
+  {
+    title: "Item 2",
+    description: "Test 2"
+  }
+];
 
 app.get('/', (req, res) => {
-  res.render('index');
+  console.log(content);
+  res.render('index', {content: content});
 })
 
 app.get('/new', (req, res) => {

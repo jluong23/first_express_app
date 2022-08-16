@@ -6,6 +6,13 @@
 
         <div class="home content">
             <h2>Content</h2>
+            <!-- <% content.forEach((item) => { %>
+                <h1>Test</h1>
+            <% }) %> -->
+            <% content.map((item) => { %>
+                <h3><%=item.title%></h3>
+                <p><%=item.description%></p>
+            <% }) %>
         </div>
         <%- include('./partials/footer.ejs') %>
     </body>
