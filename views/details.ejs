@@ -17,7 +17,7 @@
         const itemTitle = document.querySelector('.item-title');
 
         deleteButton.addEventListener('click', (e) => {
-            const endpoint = `/item/${deleteButton.dataset.id}`;
+            const endpoint = `/items/${deleteButton.dataset.id}`;
             fetch(endpoint, {
                 method: 'DELETE'
             })
