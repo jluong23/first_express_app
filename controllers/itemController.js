@@ -17,18 +17,18 @@ const getAllItems = () => {
 
 const item_index = (req, res) => {
 
-    res.render('index', {items: getAllItems()});
+    res.render('items/index', {items: getAllItems()});
 
 }
 
 const item_details = (req,res) => {
     const id = req.params.id;
     let item = getAllItems().find((item) => item.id == id);
-    res.render('details', {item});
+    res.render('items/details', {item});
 }
 
 const item_create_form = (req, res) => {
-    res.render('create');
+    res.render('items/create');
 
 }
 

@@ -1,15 +1,15 @@
 <html>
-    <%- include('./partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
     <body>
-        <%- include('./partials/title.ejs') %>
-        <%- include('./partials/nav.ejs') %>
+        <%- include('../partials/title.ejs') %>
+        <%- include('../partials/nav.ejs') %>
 
         <div class="item content">
             <h2 class="item-title"><%- item.title %> </h2>
             <p><%- item.description %> </p>
             <button data-id="<%- item.id %>" class="delete-item">Delete</button>
         </div>
-        <%- include('./partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>
     </body>
 
     <script>
