@@ -5,9 +5,9 @@
         <%- include('./partials/nav.ejs') %>
 
         <div class="home content">
-            <h2>Content</h2>
+            <h2>Items</h2>
             <ul id="items">
-                <% content.map((item) => { %>
+                <% items.map((item) => { %>
                     <li>
                         <a href="/items/<%-item.id%>">
                             <h3><%=item.title%></h3>
