@@ -7,7 +7,7 @@ const port = 3000
 
 app.use(morgan('tiny')); //middleware extension for logging
 app.use(express.static('public')) //allow use of static files in /public
-app.use(express.urlencoded({extended: true})); //middleware for accepting form data (/new)
+app.use(express.urlencoded({extended: true})); //middleware for accepting form data
 
 let content = [
   {
@@ -23,11 +23,15 @@ let content = [
 ];
 
 app.get('/', (req, res) => {
+  res.redirect('/item');
+})
+
+app.get('/item', (req,res) => {
   res.render('index', {content: content});
 })
 
-app.get('/new', (req, res) => {
-  res.render('new');
+app.get('/item/create', (req, res) => {
+  res.render('create');
 })
 
 app.get('/item/:id', (req,res) => {
@@ -38,19 +42,17 @@ app.get('/item/:id', (req,res) => {
 
 app.delete('/item/:id', (req,res) => {
   const id = req.params.id;
-  let deletedItem = content.find((item) => item.id == id);
   // update content to exclude the deleted item
   content = content.filter((item) => item.id != id);
   res.json(
     {
       redirect: '/', 
-      deletedItem,
     }
   );
 })
 
 
-app.post('/new', (req, res) => { 
+app.post('/item/create', (req, res) => { 
   if(req.body){
     // add id
     req.body["id"] = content.length + 1;
