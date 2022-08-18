@@ -11,10 +11,12 @@ app.use(express.urlencoded({extended: true})); //middleware for accepting form d
 
 let content = [
   {
+    id: 1,
     title: "Item 1",
     description: "Test 1"
   },
   {
+    id: 2,
     title: "Item 2",
     description: "Test 2"
   }
@@ -28,11 +30,21 @@ app.get('/new', (req, res) => {
   res.render('new');
 })
 
+app.get('/item/:id', (req,res) => {
+  const id = req.params.id;
+  let item = content.find((item) => item.id == id);
+  res.render('details', {item});
+})
+
 app.post('/new', (req, res) => { 
-  // save content
-  content.push(req.body);
-  // redirect to index page
-  res.redirect('/');
+  if(req.body){
+    // add id
+    req.body["id"] = content.length + 1;
+    // save content
+    content.push(req.body);
+    // redirect to index page
+    res.redirect('/');
+  }
 })
 
 // 404 page

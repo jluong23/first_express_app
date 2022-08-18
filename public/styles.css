@@ -1,0 +1,23 @@
+.content {
+    margin-left: .5em;
+}
+
+#items li{
+    border-left: .5em solid crimson;
+}
+
+#items li a{
+    display: block;
+    margin-left: .5em;
+    text-decoration: none;
+    color: inherit;
+}
+
+#items li a:hover h3{
+    color: crimson;;
+}
+
+#items{
+    list-style-type: none;
+    padding: 0;
+}
