@@ -24,7 +24,11 @@ const item_index = (req, res) => {
 const item_details = (req,res) => {
     const id = req.params.id;
     let item = getAllItems().find((item) => item.id == id);
-    res.render('items/details', {item});
+    if(item){
+        res.render('items/details', {item});
+    }else{
+        res.status(404).render('404');
+    }
 }
 
 const item_create_form = (req, res) => {
