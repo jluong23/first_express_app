@@ -1,5 +1,6 @@
 .content {
-    margin-left: .5em;
+    /* margin-left: .5em; */
+    margin: .5em;
 }
 
 #items li{
@@ -20,4 +21,8 @@
 #items{
     list-style-type: none;
     padding: 0;
+}
+
+footer{
+    margin-top: 3em;
 }

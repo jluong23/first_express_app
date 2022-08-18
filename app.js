@@ -36,6 +36,20 @@ app.get('/item/:id', (req,res) => {
   res.render('details', {item});
 })
 
+app.delete('/item/:id', (req,res) => {
+  const id = req.params.id;
+  let deletedItem = content.find((item) => item.id == id);
+  // update content to exclude the deleted item
+  content = content.filter((item) => item.id != id);
+  res.json(
+    {
+      redirect: '/', 
+      deletedItem,
+    }
+  );
+})
+
+
 app.post('/new', (req, res) => { 
   if(req.body){
     // add id

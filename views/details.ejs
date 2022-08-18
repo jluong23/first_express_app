@@ -7,7 +7,26 @@
         <div class="item content">
             <h2><%- item.title %> </h2>
             <p><%- item.description %> </p>
+            <button data-id="<%- item.id %>" class="delete-item">Delete</button>
         </div>
         <%- include('./partials/footer.ejs') %>
     </body>
+
+    <script>
+        const deleteButton = document.querySelector('button.delete-item');
+
+        deleteButton.addEventListener('click', (e) => {
+            const endpoint = `/item/${deleteButton.dataset.id}`;
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+                window.location.href = data.redirect;
+                alert(`deleted ${data.deletedItem.title}`);
+            })
+            .catch((err) => {console.log(err);})
+        });
+    </script>
 </html>
