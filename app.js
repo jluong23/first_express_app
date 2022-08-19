@@ -29,18 +29,6 @@ app.get('/', (req, res) => {
   res.redirect('/items');
 })
 
-app.get('/add', (req,res) => {
-  const newItem = new Item({
-    title: 'new item from db',
-    description: 'new item description from db'
-  });
-  newItem.save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((error) => console.log(error))
-})
-
 app.use('/items', itemRoutes);
 
 // 404 page
